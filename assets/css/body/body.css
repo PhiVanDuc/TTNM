@@ -2,6 +2,7 @@
 @import "./header.css";
 
 @import "./dashboard.css";
+@import "./product.css";
 
 .main-body {
     padding: 30px 20px 0px 20px;

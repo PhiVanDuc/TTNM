@@ -1,0 +1,119 @@
+@import "../global.css";
+
+.content-product {
+    margin-top: 50px;
+}
+
+/* Heading */
+
+.content-product .heading {
+    margin-bottom: 50px;
+}
+
+.content-product .product-item .product-info .product-name,
+.content-product .align-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-product .align-heading h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--icon-color);
+}
+
+.content-product .align-heading .button-add {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--root-color);
+    padding: 15px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* End Heading */
+
+/* Product List */
+
+.content-product .product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.content-product .product-item {
+    border-radius: 8px;
+    background: white;
+}
+
+.content-product .product-item .product-image {
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    background: #ccc;
+}
+
+.content-product .product-item .product-info {
+    padding: 20px;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.content-product .product-item .product-info .product-cost,
+.content-product .product-item .product-info .product-name {
+    margin-bottom: 15px;
+}
+
+.content-product .product-name h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.content-product .product-name .product-category {
+    font-size: 14px;
+    font-weight: 500;
+    color: #9D9D9D;
+}
+
+.content-product .product-item .product-cost {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.content-product .product-cost i {
+    font-size: 20px;
+    color: var(--root-color);
+}
+
+.content-product .product-cost {
+    font-weight: 500;
+    color: var(--root-color);
+}
+
+.content-product .product-buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.content-product .product-buttons .button-delete,
+.content-product .product-buttons .button-edit {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1.5px solid var(--icon-color);
+    color: var(--icon-color);
+    width: 70%;
+    text-align: center;
+}
+
+.content-product .product-buttons .button-delete {
+    width: 30%;
+}
+
+/* End Product List */
