@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input {
+    outline: none;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}

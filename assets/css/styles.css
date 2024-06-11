@@ -1,0 +1,12 @@
+/* Reset css */
+@import "./reset/reset.css";
+@import "./reset/advanced-reset.css";
+
+/* Font Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* Sidebar css */
+@import "./sidebar/sidebar.css";
+
+/* Body */
+@import "./body/body.css";

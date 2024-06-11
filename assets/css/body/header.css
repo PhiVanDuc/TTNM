@@ -1,0 +1,115 @@
+@import "../global.css";
+
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-header .search-bar {
+    position: relative;
+    width: 67%;
+}
+
+.main-header .search-bar i {
+    position: absolute;
+    font-size: 24px;
+    color: #9E9E9E; 
+    top: 50%;
+    left: calc(70px / 2);
+    transform: translate(-50%, -50%);
+}
+
+.main-header .search-bar input {
+    width: 100%;
+    font-size: 14px;
+    padding: 15px;
+    padding-left: 70px;
+    background: #F5F5F5;
+    border-radius: 99px;
+    border: 1px solid #9E9E9E;
+}
+
+.main-header .search-bar input::placeholder {
+    color: #9E9E9E;
+}
+
+.main-header .notify-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 25px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.main-header .notify-wrapper .icon::before {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 99px;
+    background-color: var(--orange-color);
+    right: 1px;
+    top: 1px;
+    outline: 2px solid white;
+    z-index: 10;
+}
+
+.main-header .notify-wrapper .icon {
+    position: relative;
+}
+
+.main-header .notify-wrapper .icon i {
+    font-size: 26px;
+    color: var(--icon-color);
+}
+
+.main-header .notify-wrapper .notify-quantity {
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 99px;
+    background: var(--orange-color);
+    margin-right: 5px;
+}
+
+.main-header .main-header-left,
+.main-header .user-card-wrapper,
+.main-header .user-card {
+    display: flex;
+    align-items: center;
+}
+
+.main-header .user-card-wrapper {
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.main-header .user-card-wrapper i {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 20px;
+    color: var(--icon-color);
+}
+
+.main-header .user-card .image {
+    width: 50px;
+    height: 50px;
+    border-radius: 99px;
+    background-color: #CFCFCF;
+    margin-right: 15px;
+}
+
+.main-header .user-card .name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.main-header .user-card .email {
+    font-size: 12px;
+    font-weight: 400;
+}
+

@@ -1,0 +1,255 @@
+@import "../global.css";
+
+.sidebar {
+    position: relative;
+    flex-shrink: 0;
+    width: 300px;
+    height: 100vh;
+    padding: 30px;
+    background-color: white;
+    box-shadow: -3px 0px 62px 0px rgba(0,0,0,0.05);
+    -webkit-box-shadow: -3px 0px 62px 0px rgba(0,0,0,0.05);
+    -moz-box-shadow: -3px 0px 62px 0px rgba(0,0,0,0.05);
+    transition: width 0.3s linear;
+}
+
+/* Logo */
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.logo-container .logo {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.seperate-bar {
+    display: inline-block;
+    width: 100%;
+    height: 3px;
+    border-radius: 99px;
+    background-color: var(--root-color);
+}
+
+/* End Logo */
+
+/* Sidebar Section */
+
+.sidebar-section {
+    margin-bottom: 15px;
+}
+
+.sidebar-section .heading {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.sidebar-section .option-item {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.sidebar-section .option-item .mark-bar {
+    position: absolute;
+    width: 8px;
+    height: 100%;
+    background-color: var(--root-color);
+    border-radius: 99px;
+    left: -18px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sidebar-section .option-item .option-name {
+    position: absolute;
+    top: 50%;
+    left: 175px;
+    transform: translateY(-50%);
+    padding: 15px 30px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: -3px 0px 62px 0px rgba(0,0,0,0.05);
+    -webkit-box-shadow: -3px 0px 62px 0px rgba(0,0,0,0.05);
+    -moz-box-shadow: -3px 0px 62px 0px rgba(0,0,0,0.05);
+    visibility: hidden;
+    opacity: 0;
+    transition-property: visibility, opacity;
+    transition: 0.3s linear;
+}
+
+.sidebar-section .option-item .option-name::before {
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid white;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+}
+
+.sidebar-section .option-link {
+    display: flex;
+    align-items: center;
+    color: #22092C;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: white;
+    transition: background-color 0.2s linear;
+}
+
+.sidebar-section .option-link:hover {
+    background-color: var(--hover-color);
+}
+
+.sidebar-section .option-link .option-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    width: 24px;
+    height: 24px;
+}
+
+.sidebar-section .option-link .option-icon > i {
+    flex-shrink: 0;
+    font-size: 21px;
+}
+
+.sidebar-section .option-link p {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition-property: visibility, opacity;
+    transition: 0.2s linear;
+}
+
+/* End Sidebar Section */
+
+.sidebar-section .option-item.dashboard .option-link,
+.sidebar-section .option-item.product .option-link,
+.sidebar-section .option-item.poster .option-link,
+.sidebar-section .option-item.coupon .option-link {
+    background-color: var(--root-color);
+    color: white;
+}
+
+.sidebar-section .option-item.dashboard .mark-bar,
+.sidebar-section .option-item.product .mark-bar,
+.sidebar-section .option-item.poster .mark-bar,
+.sidebar-section .option-item.coupon .mark-bar {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Toggle */
+
+.toggle-wrapper {
+    position: absolute;
+    width: 100%;
+    padding: 0px 30px 0px 30px;
+    left: 0;
+    bottom: 30px;
+}
+
+.toggle-wrapper .seperate-bar {
+    margin-bottom: 15px;
+}
+
+.toggle-wrapper .align-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toggle-wrapper h4 {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#toggle-checkbox {
+    display: none;
+}
+
+.toggle-wrapper .switch {
+    position: relative;
+    flex-shrink: 0;
+    width: 50px;
+    height: 25px;
+    background-color: #D9D9D9;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+.toggle-wrapper .switch > .round {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 99px;
+    background-color: white;
+    transition: all 0.2s linear;
+}
+
+#toggle-checkbox:checked + .sidebar .switch {
+    background-color: var(--root-color);
+}
+
+#toggle-checkbox:checked + .sidebar .switch > .round {
+    left: 28px;
+}
+
+/* End Toggle */
+
+/* Transform Sidebar */
+#toggle-checkbox:checked + .sidebar {
+    width: fit-content;
+}
+
+#toggle-checkbox:checked + .sidebar .sidebar-section .option-link p {
+    visibility: hidden;
+    opacity: 0;
+    width: 0px;
+}
+
+#toggle-checkbox:checked + .sidebar .sidebar-section .option-link {
+    justify-content: center;
+}
+
+#toggle-checkbox:checked + .sidebar .sidebar-section .option-link .option-icon {
+    margin-right: 0px;
+}
+
+#toggle-checkbox:checked + .sidebar .toggle-wrapper h4 {
+    display: none;
+}
+
+#toggle-checkbox:checked + .sidebar .toggle-wrapper .align-toggle {
+    justify-content: center;
+}
+
+/* End Transform Sidebar */
+
+/* Hover Sidebar Option Item */
+
+#toggle-checkbox:checked + .sidebar .sidebar-section .option-item:hover .option-name {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* End Hover Sidebar Option Item */

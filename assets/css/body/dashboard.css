@@ -1,0 +1,12 @@
+@import "../global.css";
+
+.content-dashboard {
+    margin-top: 50px;
+}
+
+.content-dashboard .heading h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--icon-color);
+}
