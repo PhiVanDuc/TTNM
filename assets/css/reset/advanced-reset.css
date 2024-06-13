@@ -20,6 +20,7 @@ ol {
     list-style: none;
 }
 
+textarea,
 input {
     outline: none;
     font-family: "Inter", sans-serif;

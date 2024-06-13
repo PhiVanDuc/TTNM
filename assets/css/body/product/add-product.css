@@ -1,0 +1,229 @@
+@import "../../global.css";
+
+.form-add-product {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.form-add-product .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-add-product .wrapper-form-group {
+    margin-bottom: 20px;
+}
+
+.form-add-product .wrapper-form-group .form-group {
+    margin-bottom: 0px;
+}
+
+.form-add-product label {
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--icon-color);
+}
+
+.form-add-product textarea,
+.form-add-product input:not([type=file]) {
+    display: inline-block;
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid var(--icon-color);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--icon-color);
+}
+
+.form-add-product textarea::placeholder,
+.form-add-product input:not([type=file])::placeholder {
+    color: #868686;
+    font-weight: 400;
+}
+
+.form-add-product .form-group.invalid .message {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--root-color);
+}
+
+.form-add-product .button-add-product {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--root-color);
+    padding: 15px 20px;
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.form-add-product .form-align {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+
+.form-add-product .select-categories {
+    position: relative;
+}
+
+.form-add-product .select-categories .select-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border: 1px solid var(--icon-color);
+    border-radius: 5px;
+    height: 50.58px;
+    cursor: pointer;
+}
+
+.form-add-product .select-categories .select-heading span {
+    display: inline-block;
+    width: 85%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    line-height: 1.5;
+    font-size: 16px;
+    color: #868686;
+    font-weight: 400;
+}
+
+.form-add-product .select-categories .select-heading i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    border-radius: 99px;
+    color: var(--icon-color);
+    transition: background-color 0.2s linear;
+    z-index: 20;
+}
+
+.form-add-product .select-categories:hover .select-heading i {
+    background-color: #e6e6e6;
+    transition: transform 0.4s linear;
+}
+
+.form-add-product .select-categories.open .select-heading i {
+    transform: rotate(-180deg);
+}
+
+.form-add-product .select-categories .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.form-add-product .select-categories .select-options {
+    position: absolute;
+    margin-top: 15px;
+    left: 0px;
+    right: 0px;
+    padding: 20px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    visibility: hidden;
+    opacity: 0;
+    transition-property: visibility, opacity;
+    transition: 0.2s linear;
+    z-index: 99;
+}
+
+.form-add-product .select-categories.open .overlay {
+    display: inline-block;
+}
+
+.form-add-product .select-categories.open .select-options {
+    visibility: visible;
+    opacity: 1;
+}
+
+.form-add-product .select-categories .select-item {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    padding: 10px 0px;
+    cursor: pointer;
+}
+
+.form-add-product .select-categories .select-item .item-text {
+    font-weight: 500;
+    color: var(--icon-color);
+    transition: color 0.2s linear;
+}
+
+.form-add-product .select-categories .select-item:hover .item-text {
+    color: var(--root-color);
+}
+
+.form-add-product .select-categories .select-item .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 2px solid var(--root-color);
+    transition: background 0.2s linear;
+}
+
+.form-add-product .select-categories .checkbox i {
+    transform: scale(0);
+    color: white;
+    transition: transform 0.2s linear;
+}
+
+.form-add-product .select-categories .select-item.checked .checkbox {
+    background: var(--root-color);
+}
+
+.form-add-product .select-categories .select-item.checked .checkbox i {
+    transform: scale(1);
+}
+
+.form-add-product textarea {
+    resize: none;
+    height: 120px;
+}
+
+.form-add-product input[type=file] {
+    display: none;
+}
+
+.form-add-product .wrapper-input-file {
+    display: flex;
+    align-items: center;
+}
+
+.form-add-product .input-file-2 {
+    width: 150px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px dotted var(--icon-color);
+    cursor: pointer;
+    background-color: rgb(243 244 246);
+    margin: 0;
+}
+
+.images-container {
+    display: flex;
+    align-items: center;
+}

@@ -1,4 +1,4 @@
-@import "../global.css";
+@import "../../global.css";
 
 .content-product {
     margin-top: 50px;
@@ -42,6 +42,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    margin-bottom: 20px;
 }
 
 .content-product .product-item {
