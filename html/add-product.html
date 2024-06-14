@@ -10,6 +10,7 @@
 
         <!-- Import css -->
         <link rel="stylesheet" href="../assets/css/styles.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     </head>
 
     <body>
@@ -29,7 +30,7 @@
                     <ul class="option-list">
                         <li class="option-item">
                             <span class="mark-bar"></span>
-                            <a class="option-link" href="http://localhost:5500/index.html">
+                            <a class="option-link" href="http://127.0.0.1:3001/index.html">
                                 <span class="option-icon">
                                     <i class="fa-solid fa-chart-simple"></i>
                                 </span>
@@ -48,7 +49,7 @@
                     <ul class="option-list">
                         <li class="option-item product">
                             <span class="mark-bar"></span>
-                            <a class="option-link" href="http://localhost:5500/html/product-management.html">
+                            <a class="option-link" href="http://127.0.0.1:3001/html/product-management.html?page=1">
                                 <span class="option-icon">
                                     <i class="fa-solid fa-box-archive"></i>
                                 </span>
@@ -61,7 +62,7 @@
 
                         <li class="option-item">
                             <span class="mark-bar"></span>
-                            <a class="option-link" href="http://localhost:5500/html/poster-management.html">
+                            <a class="option-link" href="http://127.0.0.1:3001/html/poster-management.html">
                                 <span class="option-icon">
                                     <i class="fa-solid fa-clipboard"></i>
                                 </span>
@@ -74,7 +75,7 @@
 
                         <li class="option-item">
                             <span class="mark-bar"></span>
-                            <a class="option-link" href="http://localhost:5500/html/coupon-management.html">
+                            <a class="option-link" href="http://127.0.0.1:3001/html/coupon-management.html">
                                 <span class="option-icon">
                                     <i class="fa-solid fa-ticket"></i>
                                 </span>
@@ -139,13 +140,13 @@
                     <header class="heading">
                         <div class="align-heading">
                             <h3>Add product</h3>
-                            <a href="http://localhost:5500/html/product-management.html" class="button-add">Turn back</a>
+                            <a href="http://127.0.0.1:3001/html/product-management.html" class="button-add">Turn back</a>
                         </div>
 
                         <span class="seperate-bar"></span>
                     </header>
 
-                    <form action="" method="post" class="form-add-product" autocomplete="off">
+                    <form class="form-add-product">
                         <div class="form-group">
                             <label for="input-name">Product's name</label>
                             <input type="text" class="input-name" id="input-name" name="name" placeholder="Product's name...">
@@ -198,7 +199,7 @@
 
                             <div class="form-group" style="width: 50%;">
                                 <label for="input-profit-price">profit Price</label>
-                                <input type="number" class="input-profit-price" id="input-profit-price" name="initial-price" placeholder="Profit price...">
+                                <input type="number" class="input-profit-price" id="input-profit-price" name="profit-price" placeholder="Profit price...">
                                 <span class="message"></span>
                             </div>
                         </div>
@@ -214,7 +215,7 @@
                             <div class="wrapper-input-file">
                                 <div class="images-container"></div>
                                 <label for="input-file" class="input-file-2">Choose image</label>
-                                <input type="file" class="input-file" id="input-file" accept="image/*"  name="file" multiple>
+                                <input type="file" class="input-file" id="input-file" accept="image/*"  name="files" multiple>
                             </div>
                             <span class="message"></span>
                         </div>
@@ -226,10 +227,16 @@
             <!-- End Main -->
 
             <script src="../assets/javascripts/sidebar.js"></script>
-            <script src="../assets/javascripts/product/select-options.js"></script>
-            <script src="../assets/javascripts/product/multiple-image.js"></script>
-            <script src="../assets/javascripts/product/validation.js"></script>
-            <script>
+            <script src="../assets/javascripts/utils/select-options.js"></script>
+            <script src="../assets/javascripts/utils/multiple-image.js"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+            <script type="module" src="../assets/javascripts/utils/utils.js"></script>
+            <script type="module" src="../assets/javascripts/utils/validation.js"></script>
+
+            <script type="module">
+                import validation from "../assets/javascripts/utils/validation.js";
+                import { notify, formatString } from "../assets/javascripts/utils/utils.js";
+
                 validation({
                     form: ".form-add-product",
                     message: ".message",
@@ -244,10 +251,57 @@
                         validation.isMin(".input-description", "Please enter at least 6 characters!"),
                         validation.isFiles(".input-file", "Please choose at least 1 file!"),
                     ],
-                    onSubmit: function(data) {
-                        // Xử lý onSubmit ở đây
+                    onSubmit: async function(data) {
+                        try {
+                            if (data) {
+                                const arrayFiles = Array.from(data.files);
+                                const files = await Promise.all(arrayFiles.map(async (file) => {
+                                    const reader = new FileReader();
+                                    const dataUrl = await new Promise((resolve, reject) => {
+                                        reader.addEventListener("load", () => resolve(reader.result));
+                                        reader.addEventListener("error", reject);
+                                        reader.readAsDataURL(file);
+                                    });
+                                    return dataUrl;
+                                }));
 
-                        console.log("Submit: ", data);
+                                const responseGet = await fetch("http://localhost:3000/products");
+                                const products = await responseGet.json();
+
+                                if (products.length === 0) {
+                                    const response = await fetch("http://localhost:3000/products", {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({ ...data, files }),
+                                    });
+
+                                    if (response.ok) notify("Success");
+                                    else notify("Failed!", false);
+                                } 
+                                else if (products.length > 0) {
+                                    const isExist = products.find((product) => formatString(product.name) === formatString(data.name));
+                                    if (isExist) notify("Product have already existed!", false);
+                                    else {
+                                        const response = await fetch("http://localhost:3000/products", {
+                                            method: "POST",
+                                            headers: {
+                                                "Content-Type": "application/json"
+                                            },
+                                            body: JSON.stringify({ ...data, files }),
+                                        });
+
+                                        if (response.ok) notify("Success");
+                                        else notify("Failed!", false);
+                                    }
+                                }
+                            }
+                        }
+                        catch (error) {
+                            console.log(error);
+                            notify("Add product failed!", false);
+                        }
                     }
                 });
             </script>

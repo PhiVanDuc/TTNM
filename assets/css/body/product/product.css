@@ -45,6 +45,16 @@
     margin-bottom: 20px;
 }
 
+.content-product .product-list.empty {
+    display: block;
+    text-align: center;
+}
+
+.content-product .product-list.empty h3 {
+    font-size: 35px;
+    color: var(--icon-color);
+}
+
 .content-product .product-item {
     border-radius: 8px;
     background: white;
@@ -55,6 +65,13 @@
     height: 250px;
     border-radius: 8px;
     background: #ccc;
+}
+
+.content-product .product-item .product-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 .content-product .product-item .product-info {

@@ -227,3 +227,35 @@
     display: flex;
     align-items: center;
 }
+
+.images-container img {
+    display: "inline-block";
+    margin-right: 15px;
+}
+
+/* Css cho icon close */
+button.toast-close {
+    color: black;
+}
+
+.toastify {
+    column-gap: 20px;
+}
+
+.toastify.error::before,
+.toastify.success::before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f00c";
+    position: absolute;
+    font-weight: 900;
+    font-size: 22px;
+    left: 20px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(92,184,92);
+}
+
+.toastify.error::before {
+    content: "\f00d";
+    color: var(--root-color);
+}
