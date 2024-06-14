@@ -10,3 +10,6 @@
 
 /* Body */
 @import "./body/body.css";
+
+/* Dialog css */
+@import "./dialog/dialog.css";

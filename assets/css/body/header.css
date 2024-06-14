@@ -49,11 +49,11 @@
     width: 7px;
     height: 7px;
     border-radius: 99px;
-    background-color: var(--orange-color);
+    background-color: var(--root-color);
     right: 1px;
     top: 1px;
-    outline: 2px solid white;
-    z-index: 10;
+    outline: 3px solid var(--background-body);
+    z-index: -1;
 }
 
 .main-header .notify-wrapper .icon {

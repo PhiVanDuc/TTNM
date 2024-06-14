@@ -1,0 +1,96 @@
+.confirm-dialog.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.confirm-dialog {
+    position: fixed;
+    inset: 0;
+    visibility: visible;
+    opacity: 1;
+    transition-property: visibility, opacity;
+    transition: 0.3s linear;
+}
+
+.confirm-dialog .dialog-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.confirm-dialog .container-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    padding-bottom: 25px;
+    border-radius: 7px;
+    background-color: white;
+    width: 400px;
+}
+
+.confirm-dialog .container-dialog .dialog-heading {
+    padding: 15px 0px;
+}
+
+.confirm-dialog .container-dialog .dialog-heading .heading-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--icon-color);
+    column-gap: 10px;
+}
+
+.confirm-dialog .container-dialog .dialog-heading .seperate-bar {
+    display: inline-block;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.confirm-dialog .container-dialog .dialog-heading i {
+    font-size: 20px;
+    color: var(--icon-color);
+}
+
+.confirm-dialog .container-dialog .dialog-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 10px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--icon-color)
+}
+
+.confirm-dialog .container-dialog .dialog-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+}
+
+.confirm-dialog .container-dialog .dialog-buttons button {
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 5px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.confirm-dialog .container-dialog .dialog-buttons button:first-child {
+    background-color: #d6d6d6;
+    color: #838383;
+}
+
+.confirm-dialog .container-dialog .dialog-buttons button:last-child {
+    background-color: var(--root-color);
+    color: white;
+}

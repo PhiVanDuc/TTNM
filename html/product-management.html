@@ -154,12 +154,38 @@
                     <ul class="pagination">
                     </ul>
                 </div>
+
+                <!-- Confirm dialog -->
+                <div class="confirm-dialog hidden">
+                    <div class="dialog-overlay"></div>
+
+                    <div class="container-dialog">
+                        <div class="dialog-heading">
+                            <div class="heading-content">
+                                <i class="fa-solid fa-question"></i>
+                                <span>Confirmation notice</span>
+                            </div>
+                            <span class="seperate-bar"></span>
+                        </div>
+
+                        <p class="dialog-content">Do you agree to delete product?</p>
+
+                        <div class="dialog-buttons">
+                            <button type="button" class="button-disagree">Disagree</button>
+                            <button type="button" class="button-agree" data-id="">Agree</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
             </main>
             <!-- End Main -->
 
             <script src="../assets/javascripts/sidebar.js"></script>
             <script type="module" src="../assets/javascripts/products/loadProduct.js"></script>
             <script type="module" src="../assets/javascripts/utils/pagination.js"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+            <script type="module" src="../assets/javascripts/utils/utils.js"></script>
+            <script type="module" src="../assets/javascripts/products/dialogDelete.js"></script>
         </div>
     </body>
 </html>

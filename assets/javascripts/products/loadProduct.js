@@ -2,13 +2,13 @@ import pagination from "../utils/pagination.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 let currentPage = urlParams.get('page') ? urlParams.get('page') : 1;
+const ProductList = document.querySelector(".content-product .product-list");
 
 const getProducts = async () => {
     const response = await fetch(`http://localhost:3000/products?_page=${currentPage}&_per_page=9`);
     const products = await response.json();
     localStorage.setItem("length-products", JSON.stringify(products.items));
 
-    const ProductList = document.querySelector(".content-product .product-list");
     if (products.data && Array.isArray(products.data) && products.data.length > 0 && (+currentPage <= products.last && +currentPage >= products.first)) {
         ProductList.innerHTML = products.data.map((product) => {
             return `
@@ -35,7 +35,7 @@ const getProducts = async () => {
 
                         <div class="product-buttons">
                             <a href="http://127.0.0.1:3001/html/edit-product.html?id=${ product.id }" class="button-edit" data-id="${ product.id }">Edit</a>
-                            <button href="#!" class="button-delete" data-id="${ product.id }">Delete</button>
+                            <button class="button-delete" data-id="${ product.id }">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -49,6 +49,18 @@ const getProducts = async () => {
 }
 
 await getProducts();
+
+const ButtonDeletes = ProductList.querySelectorAll(".button-delete");
+const ConfirmDialog = document.querySelector(".confirm-dialog");
+const ButtonAgree = ConfirmDialog.querySelector(".button-agree");
+
+ButtonDeletes.forEach(ButtonDelete => {
+    ButtonDelete.addEventListener("click", () => {
+        const id = ButtonDelete.dataset.id;
+        ButtonAgree.dataset.id = id;
+        ConfirmDialog.classList.remove("hidden");
+    });
+})
 
 const paginationElement = document.querySelector(".content-product .pagination");
 const length = JSON.parse(localStorage.getItem("length-products"));
