@@ -40,10 +40,41 @@
 
 .content-product .product-list {
     display: grid;
+    position: relative;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-bottom: 20px;
 }
+
+.content-product .product-list .simple-spinner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+}
+
+.simple-spinner span {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-right-color: var(--root-color);
+    animation: spinner-anim 0.8s linear infinite;
+  }
+
+  @keyframes spinner-anim {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
 .content-product .product-list.empty {
     display: block;
@@ -52,7 +83,8 @@
 
 .content-product .product-list.empty h3 {
     font-size: 35px;
-    color: var(--icon-color);
+    font-weight: 600;
+    color: rgb(207, 207, 207);
 }
 
 .content-product .product-item {

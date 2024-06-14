@@ -154,13 +154,13 @@
                         </div>
 
                         <div class="form-align">
-                            <div class="form-group" style="width: 65%;">
+                            <div class="form-group" style="width: 50%;">
                                 <label for="input-quantity">Quantity</label>
                                 <input type="number" class="input-quantity" id="input-quantity" name="quantity" placeholder="Quantity...">
                                 <span class="message"></span>
                             </div>
 
-                            <div class="form-group" style="width: 35%;">
+                            <div class="form-group" style="width: 50%;">
                                 <label for="input-name" class="lable-name">Categories</label>
 
                                 <div class="select-categories" name="categories">
@@ -192,14 +192,14 @@
 
                         <div class="form-align">
                             <div class="form-group" style="width: 50%;">
-                                <label for="input-initial-price">Initial Price</label>
+                                <label for="input-initial-price">Initial price</label>
                                 <input type="number" class="input-initial-price" id="input-initial-price" name="initial-price" placeholder="Initial price...">
                                 <span class="message"></span>
                             </div>
 
                             <div class="form-group" style="width: 50%;">
-                                <label for="input-profit-price">profit Price</label>
-                                <input type="number" class="input-profit-price" id="input-profit-price" name="profit-price" placeholder="Profit price...">
+                                <label for="input-profit-price">Profit price</label>
+                                <input type="number" class="input-profit-price" id="input-profit-price" name="profit-price" placeholder="Profit price..." disabled>
                                 <span class="message"></span>
                             </div>
                         </div>
@@ -235,7 +235,7 @@
 
             <script type="module">
                 import validation from "../assets/javascripts/utils/validation.js";
-                import { notify, formatString } from "../assets/javascripts/utils/utils.js";
+                import { notify, formatString, profitPrice, stringInNum } from "../assets/javascripts/utils/utils.js";
 
                 validation({
                     form: ".form-add-product",
@@ -304,6 +304,16 @@
                         }
                     }
                 });
+
+                const InitialPrice = document.querySelector(".input-initial-price");
+                const ProfitPrice = document.querySelector(".input-profit-price");
+                const InputQuantity = document.querySelector(".input-quantity");
+                stringInNum([
+                    InitialPrice, 
+                    ProfitPrice,
+                    InputQuantity
+                ]);
+                profitPrice(InitialPrice, ProfitPrice, 0.2);
             </script>
         </div>
     </body>

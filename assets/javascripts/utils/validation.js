@@ -1,3 +1,5 @@
+import { formatPrice } from "./utils.js";
+
 function removeMessage (FormGroup, Message) {
     FormGroup.classList.remove("invalid");
     Message.innerHTML = "";
@@ -53,7 +55,7 @@ function validation (options) {
 
             if (isFormValid) {
                 if (typeof options.onSubmit === "function") {
-                    const Inputs = Form.querySelectorAll("[name]:not([disabled])");
+                    const Inputs = Form.querySelectorAll("[name]");
 
                     const formValues = Array.from(Inputs).reduce(function(prev, curr) {
                         switch(curr.tagName) {
@@ -80,8 +82,12 @@ function validation (options) {
                         return prev;
                     }, {});
 
+                    console.log(formValues);
+
                     await options.onSubmit({
                         ...formValues,
+                        "initial-price": formatPrice(formValues["initial-price"]),
+                        "profit-price": formatPrice(formValues["profit-price"]),
                     });
                 }
             }

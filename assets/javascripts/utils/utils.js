@@ -36,3 +36,26 @@ export const formatString = (string) => {
 
     return lowercase.trim();
 }
+
+export const stringInNum = (inputs) => {
+    const handle = (e) => {
+        const input = e.target;
+        const value = input.value;
+        input.value = value.replace(/e/gi, '');
+    }
+
+    inputs.forEach((input) => {
+        input.addEventListener("input", (e) => { handle(e) });
+    });
+}
+
+export const formatPrice = (num) => {
+    return parseFloat(+num).toFixed(2);
+}
+
+export const profitPrice = (initial, profit, percent) => {
+    initial.addEventListener("input", (e) => {
+        const value = +initial.value;
+        profit.value = value + (value * percent);
+    });
+}

@@ -39,6 +39,14 @@
     color: var(--icon-color);
 }
 
+.form-add-product input:disabled {
+    background: #e3e3e3;
+}
+
+.form-add-product input:disabled::placeholder {
+    color: #666666;
+}
+
 .form-add-product textarea::placeholder,
 .form-add-product input:not([type=file])::placeholder {
     color: #868686;
