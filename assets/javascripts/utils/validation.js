@@ -7,6 +7,7 @@ function removeMessage (FormGroup, Message) {
 
 function validation (options) {
     const Form = document.querySelector(options.form);
+    const Button = document.querySelector(options.button);
     const ruleList = {};
 
     function validate (FormGroup, Message, Input, rule) {
@@ -35,11 +36,9 @@ function validation (options) {
         return !message;
     }
     
-    if (Form) {
+    if (Button) {
         // Sự kiện submit form
-        Form.addEventListener("submit", async (event) => {
-            event.preventDefault();
-
+        Button.addEventListener("click", async (event) => {
             let isFormValid = true;
             options.rules.forEach(function(rule) {
                 const Input = Form.querySelector(rule.selector);
@@ -81,8 +80,6 @@ function validation (options) {
 
                         return prev;
                     }, {});
-
-                    console.log(formValues);
 
                     await options.onSubmit({
                         ...formValues,

@@ -1,6 +1,7 @@
 /* Color */
 :root {
     --root-color: #FF5A5F;
+    --disabled-color:rgb(253, 137, 141);
     --background-body: #FBF4F5;
     --hover-color: rgb(247, 245, 245);
     --icon-color: #33363F;

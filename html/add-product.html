@@ -146,7 +146,7 @@
                         <span class="seperate-bar"></span>
                     </header>
 
-                    <form class="form-add-product">
+                    <form class="form-product">
                         <div class="form-group">
                             <label for="input-name">Product's name</label>
                             <input type="text" class="input-name" id="input-name" name="name" placeholder="Product's name...">
@@ -220,7 +220,7 @@
                             <span class="message"></span>
                         </div>
 
-                        <button type="submit" class="button-add-product">Add product</button>
+                        <button type="button" class="button-add-product">Add product</button>
                     </form>
                 </div>
             </main>
@@ -238,7 +238,8 @@
                 import { notify, formatString, profitPrice, stringInNum } from "../assets/javascripts/utils/utils.js";
 
                 validation({
-                    form: ".form-add-product",
+                    form: ".form-product",
+                    button: ".button-add-product",
                     message: ".message",
                     rules: [
                         validation.isRequired(".input-name", "Please enter characters!"),
@@ -265,6 +266,9 @@
                                     return dataUrl;
                                 }));
 
+                                const ButtonAdd = document.querySelector(".button-add-product");
+                                ButtonAdd.disabled = true;
+
                                 const responseGet = await fetch("http://localhost:3000/products");
                                 const products = await responseGet.json();
 
@@ -277,8 +281,8 @@
                                         body: JSON.stringify({ ...data, files }),
                                     });
 
-                                    if (response.ok) notify("Success");
-                                    else notify("Failed!", false);
+                                    if (response.ok) notify("Added product successfully!");
+                                    else notify("Add product failed!", false);
                                 } 
                                 else if (products.length > 0) {
                                     const isExist = products.find((product) => formatString(product.name) === formatString(data.name));
@@ -292,10 +296,12 @@
                                             body: JSON.stringify({ ...data, files }),
                                         });
 
-                                        if (response.ok) notify("Success");
-                                        else notify("Failed!", false);
+                                        if (response.ok) notify("Added product successfully!");
+                                        else notify("Add product failed!", false);
                                     }
                                 }
+
+                                ButtonAdd.disabled = false;
                             }
                         }
                         catch (error) {

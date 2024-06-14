@@ -1,33 +1,33 @@
 @import "../../global.css";
 
-.form-add-product {
+.form-product {
     width: 100%;
     margin-bottom: 40px;
 }
 
-.form-add-product .form-group {
+.form-product .form-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
 }
 
-.form-add-product .wrapper-form-group {
+.form-product .wrapper-form-group {
     margin-bottom: 20px;
 }
 
-.form-add-product .wrapper-form-group .form-group {
+.form-product .wrapper-form-group .form-group {
     margin-bottom: 0px;
 }
 
-.form-add-product label {
+.form-product label {
     display: inline-block;
     font-weight: 600;
     margin-bottom: 10px;
     color: var(--icon-color);
 }
 
-.form-add-product textarea,
-.form-add-product input:not([type=file]) {
+.form-product textarea,
+.form-product input:not([type=file]) {
     display: inline-block;
     width: 100%;
     padding: 15px 20px;
@@ -39,21 +39,21 @@
     color: var(--icon-color);
 }
 
-.form-add-product input:disabled {
+.form-product input:disabled {
     background: #e3e3e3;
 }
 
-.form-add-product input:disabled::placeholder {
+.form-product input:disabled::placeholder {
     color: #666666;
 }
 
-.form-add-product textarea::placeholder,
-.form-add-product input:not([type=file])::placeholder {
+.form-product textarea::placeholder,
+.form-product input:not([type=file])::placeholder {
     color: #868686;
     font-weight: 400;
 }
 
-.form-add-product .form-group.invalid .message {
+.form-product .form-group.invalid .message {
     display: inline-block;
     margin-top: 5px;
     font-size: 14px;
@@ -61,7 +61,8 @@
     color: var(--root-color);
 }
 
-.form-add-product .button-add-product {
+.form-product .button-edit-product,
+.form-product .button-add-product {
     font-size: 16px;
     font-weight: 600;
     color: white;
@@ -73,18 +74,23 @@
     cursor: pointer;
 }
 
-.form-add-product .form-align {
+.form-product .button-edit-product:disabled,
+.form-product .button-add-product:disabled {
+    background-color: var(--disabled-color);
+}
+
+.form-product .form-align {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     column-gap: 20px;
 }
 
-.form-add-product .select-categories {
+.form-product .select-categories {
     position: relative;
 }
 
-.form-add-product .select-categories .select-heading {
+.form-product .select-categories .select-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -95,7 +101,7 @@
     cursor: pointer;
 }
 
-.form-add-product .select-categories .select-heading span {
+.form-product .select-categories .select-heading span {
     display: inline-block;
     width: 85%;
     white-space: nowrap;
@@ -106,7 +112,7 @@
     font-weight: 400;
 }
 
-.form-add-product .select-categories .select-heading i {
+.form-product .select-categories .select-heading i {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,16 +125,16 @@
     z-index: 20;
 }
 
-.form-add-product .select-categories:hover .select-heading i {
+.form-product .select-categories:hover .select-heading i {
     background-color: #e6e6e6;
     transition: transform 0.4s linear;
 }
 
-.form-add-product .select-categories.open .select-heading i {
+.form-product .select-categories.open .select-heading i {
     transform: rotate(-180deg);
 }
 
-.form-add-product .select-categories .overlay {
+.form-product .select-categories .overlay {
     display: none;
     position: fixed;
     inset: 0;
@@ -136,7 +142,7 @@
     cursor: pointer;
 }
 
-.form-add-product .select-categories .select-options {
+.form-product .select-categories .select-options {
     position: absolute;
     margin-top: 15px;
     left: 0px;
@@ -152,16 +158,16 @@
     z-index: 99;
 }
 
-.form-add-product .select-categories.open .overlay {
+.form-product .select-categories.open .overlay {
     display: inline-block;
 }
 
-.form-add-product .select-categories.open .select-options {
+.form-product .select-categories.open .select-options {
     visibility: visible;
     opacity: 1;
 }
 
-.form-add-product .select-categories .select-item {
+.form-product .select-categories .select-item {
     display: flex;
     align-items: center;
     column-gap: 15px;
@@ -169,17 +175,17 @@
     cursor: pointer;
 }
 
-.form-add-product .select-categories .select-item .item-text {
+.form-product .select-categories .select-item .item-text {
     font-weight: 500;
     color: var(--icon-color);
     transition: color 0.2s linear;
 }
 
-.form-add-product .select-categories .select-item:hover .item-text {
+.form-product .select-categories .select-item:hover .item-text {
     color: var(--root-color);
 }
 
-.form-add-product .select-categories .select-item .checkbox {
+.form-product .select-categories .select-item .checkbox {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,35 +196,35 @@
     transition: background 0.2s linear;
 }
 
-.form-add-product .select-categories .checkbox i {
+.form-product .select-categories .checkbox i {
     transform: scale(0);
     color: white;
     transition: transform 0.2s linear;
 }
 
-.form-add-product .select-categories .select-item.checked .checkbox {
+.form-product .select-categories .select-item.checked .checkbox {
     background: var(--root-color);
 }
 
-.form-add-product .select-categories .select-item.checked .checkbox i {
+.form-product .select-categories .select-item.checked .checkbox i {
     transform: scale(1);
 }
 
-.form-add-product textarea {
+.form-product textarea {
     resize: none;
     height: 120px;
 }
 
-.form-add-product input[type=file] {
+.form-product input[type=file] {
     display: none;
 }
 
-.form-add-product .wrapper-input-file {
+.form-product .wrapper-input-file {
     display: flex;
     align-items: center;
 }
 
-.form-add-product .input-file-2 {
+.form-product .input-file-2 {
     width: 150px;
     height: 100px;
     display: flex;
