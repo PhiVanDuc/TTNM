@@ -62,6 +62,7 @@ ButtonDeletes.forEach(ButtonDelete => {
     });
 })
 
+// Pagination
 const paginationElement = document.querySelector(".content-product .pagination");
 const length = JSON.parse(localStorage.getItem("length-products"));
 
