@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Channel - Add Product</title>
+
+        <!-- Import font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- Import css -->
+        <link rel="stylesheet" href="../assets/css/styles.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    </head>
+
+    <body>
+        <div style="display: flex; align-items: flex-start; width: 100%;">
+            <input type="checkbox" id="toggle-checkbox">
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="logo-container">
+                    <h3 class="logo">Channel</h3>
+                    <span class="seperate-bar"></span>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4 class="heading">General</h4>
+
+                    <ul class="option-list">
+                        <li class="option-item">
+                            <span class="mark-bar"></span>
+                            <a class="option-link" href="http://127.0.0.1:3001/index.html">
+                                <span class="option-icon">
+                                    <i class="fa-solid fa-chart-simple"></i>
+                                </span>
+                                
+                                <p>Dashboard</p>
+                            </a>
+
+                            <p class="option-name">Dashboard</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4 class="heading">Management</h4>
+
+                    <ul class="option-list">
+                        <li class="option-item">
+                            <span class="mark-bar"></span>
+                            <a class="option-link" href="http://127.0.0.1:3001/html/product-management.html?page=1">
+                                <span class="option-icon">
+                                    <i class="fa-solid fa-box-archive"></i>
+                                </span>
+
+                                <p>Product</p>
+                            </a>
+
+                            <p class="option-name">Product</p>
+                        </li>
+
+                        <li class="option-item">
+                            <span class="mark-bar"></span>
+                            <a class="option-link" href="http://127.0.0.1:3001/html/poster-management.html">
+                                <span class="option-icon">
+                                    <i class="fa-solid fa-clipboard"></i>
+                                </span>
+                                
+                                <p>Poster</p>
+                            </a>
+
+                            <p class="option-name">Poster</p>
+                        </li>
+
+                        <li class="option-item product">
+                            <span class="mark-bar"></span>
+                            <a class="option-link" href="http://127.0.0.1:3001/html/coupon-management.html">
+                                <span class="option-icon">
+                                    <i class="fa-solid fa-ticket"></i>
+                                </span>
+                                
+                                <p>Coupon</p>
+                            </a>
+
+                            <p class="option-name">Coupon</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="toggle-wrapper">
+                    <span class="seperate-bar"></span>
+
+                    <div class="align-toggle">
+                        <h4>Toggle Sidebar</h4>
+
+                        <label for="toggle-checkbox" class="switch">
+                            <span class="round"></span>
+                        </label>
+                    </div>
+                </div>
+            </aside>
+            <!-- End Sidebar -->
+
+            <!-- Main -->
+            <main class="main-body">
+                <!-- Main Header -->
+                <header class="main-header">
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Start searching here...">
+                    </div>
+                    
+                    <div class="main-header-left">
+                        <div class="notify-wrapper">
+                            <p class="notify-quantity">99</p>
+
+                            <div class="icon">
+                                <i class="fa-regular fa-bell"></i>
+                            </div>
+                        </div>
+
+                        <div class="user-card-wrapper">
+                            <i class="fa-solid fa-bars"></i>    
+
+                            <div class="user-card">
+                                <span class="image"></span>
+                                
+                                <div class="user-card-info">
+                                    <p class="name">Phí Văn Đức</p>
+                                    <p class="email">phivanduc325@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- End Main Header -->
+
+                <div class="content-product">
+                    <header class="heading">
+                        <div class="align-heading">
+                            <h3>Add coupon</h3>
+                            <a href="http://127.0.0.1:3001/html/coupon-management.html" class="button-add">Turn back</a>
+                        </div>
+
+                        <span class="seperate-bar"></span>
+                    </header>
+
+                    <form class="form-product">
+
+                        <div class="form-group">
+                            <label for="input-name">Coupon name</label>
+                            <input type="text" class="input-name" id="input-name" name="name" placeholder="Coupon name...">
+                            <span class="message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-name">Coupon Code</label>
+                            <input type="text" class="input-coupon__code" id="input-coupon__code" name="coupon__code" placeholder="Coupon code...">
+                            <span class="message"></span>
+                        </div>
+
+                        <div class="form-align">
+                            <div class="form-group" style="width: 50%;">
+                                <label for="input-quantity">Quantity</label>
+                                <input type="number" class="input-quantity" id="input-quantity" name="quantity" placeholder="Quantity...">
+                                <span class="message"></span>
+                            </div>
+                            <div class="form-group" style="width: 50%;">
+                                <label for="input-discount-amount">Discount amount</label>
+                                <input type="number" class="input-discount-amount" id="input-discount-amount" name="discount__amount" placeholder="Discount amount...">
+                                <span class="message"></span>
+                            </div>
+                            
+                        </div>
+                       
+                       
+                        <div class="form-group">
+                            <label for="input-description">Coupon description</label>
+                            <textarea class="input-description" name="description" placeholder="Product description..."></textarea>
+                            <span class="message"></span>
+                        </div>
+                        <button type="button" class="button-add-product">Add coupon</button>
+                    </form>
+                 
+                </div>
+            </main>
+            <!-- End Main -->
+
+            <script src="../assets/javascripts/sidebar.js"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+            <script type="module" src="../assets/javascripts/utils-coupon/utils.js"></script>
+            <script type="module" src="../assets/javascripts/utils-coupon/validation.js"></script>
+
+            <script type="module">
+                import validation from "../assets/javascripts/utils-coupon/validation.js";
+                import { notify, formatString, profitPrice, stringInNum } from "../assets/javascripts/utils-coupon/utils.js";
+
+                validation({
+                    form: ".form-product",
+                    button: ".button-add-product",
+                    message: ".message",
+                    rules: [
+                        validation.isRequired(".input-name", "Please enter characters!"),
+                        validation.isMin(".input-name", "Please enter at least 6 characters!"),
+                        validation.isRequired(".input-quantity", "Please enter number!"),
+                        validation.isRequired(".input-discount-amount", "Please enter number!"),
+                        validation.isRequired(".input-coupon__code", "Please enter characters!"),
+                        validation.isRequired(".input-description", "Please enter characters!"),
+                        validation.isMin(".input-description", "Please enter at least 6 characters!"),
+                    ],
+                    onSubmit: async function(data) {
+                        try {
+                            if (data) {
+                               
+
+                                const ButtonAdd = document.querySelector(".button-add-product");
+                                ButtonAdd.disabled = true;
+
+                                const responseGet = await fetch("http://localhost:3000/coupons");
+                                const products = await responseGet.json();
+
+                                if (products.length === 0) {
+                                    const response = await fetch("http://localhost:3000/coupons", {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({ ...data }),
+                                    });
+
+                                    if (response.ok) notify("Added coupon successfully!");
+                                    else notify("Add coupon failed!", false);
+                                } 
+                                else if (products.length > 0) {
+                                    const isExist = products.find((product) => formatString(product.name) === formatString(data.name));
+                                    if (isExist) notify("Coupon have already existed!", false);
+                                    else {
+                                        const response = await fetch("http://localhost:3000/coupons", {
+                                            method: "POST",
+                                            headers: {
+                                                "Content-Type": "application/json"
+                                            },
+                                            body: JSON.stringify({ ...data }),
+                                        });
+
+                                        if (response.ok) notify("Added coupon successfully!");
+                                        else notify("Add coupon failed!", false);
+                                    }
+                                }
+
+                                ButtonAdd.disabled = false;
+                            }
+                        }
+                        catch (error) {
+                            console.log(error);
+                            notify("Add coupon failed!", false);
+                        }
+                    }
+                });
+                const DiscountAmount = document.querySelector(".input-discount-amount");
+                const InputQuantity = document.querySelector(".input-quantity");
+                stringInNum([
+                    InputQuantity,
+                    DiscountAmount
+                ]);
+            </script>
+        </div>
+    </body>
+</html>
