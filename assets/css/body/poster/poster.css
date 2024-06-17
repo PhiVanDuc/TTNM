@@ -1,0 +1,271 @@
+@import "../../global.css";
+
+.content-poster {
+    margin-top: 50px;
+}
+
+/* Heading */
+
+.content-poster .heading {
+    margin-bottom: 50px;
+}
+
+.content-poster .poster-item .poster-info .poster-name,
+.content-poster .align-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-poster .align-heading h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--icon-color);
+}
+
+.content-poster .align-heading .button-add {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--root-color);
+    padding: 15px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* End Heading */
+
+/* Poster List */
+
+.content-poster .poster-list {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.content-poster .poster-list .simple-spinner {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.simple-spinner span {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-right-color: var(--root-color);
+    animation: spinner-anim 0.8s linear infinite;
+  }
+
+  @keyframes spinner-anim {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+.content-poster .poster-list.empty {
+    display: block;
+    text-align: center;
+}
+
+.content-poster .poster-list.empty h3 {
+    font-size: 35px;
+    font-weight: 600;
+    color: rgb(207, 207, 207);
+}
+
+.content-poster .poster-item {
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-poster .poster-item .poster-image {
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    background: #ccc;
+}
+
+.content-poster .poster-item .poster-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.content-poster .poster-item .poster-info {
+    padding: 20px;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.content-poster .poster-item .poster-info .poster-cost,
+.content-poster .poster-item .poster-info .poster-name {
+    margin-bottom: 15px;
+}
+
+.content-poster .poster-item .poster-info .poster-name {
+    display: flex;
+    flex-direction: column; /* Ensure vertical alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    height: 100%; /* Ensure the container takes full height */
+    margin-bottom: 15px;
+}
+.content-poster .poster-name h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.content-poster .poster-name .poster-category {
+    font-size: 14px;
+    font-weight: 500;
+    color: #9D9D9D;
+}
+
+.content-poster .poster-item .poster-cost {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.content-poster .poster-cost i {
+    font-size: 20px;
+    color: var(--root-color);
+}
+
+.content-poster .poster-cost {
+    font-weight: 500;
+    color: var(--root-color);
+}
+
+.content-poster .poster-buttons {
+    display: flex;
+    justify-content: space-around; /* Để các nút cách đều nhau */
+    margin-top: 10px; /* Để tạo khoảng cách với poster-name */
+}
+
+.content-poster .poster-buttons > * {
+    flex: 1; /* Để các nút chiếm phần bằng nhau của không gian trống */
+    margin: 0 5px; /* Khoảng cách giữa các nút */
+}
+
+.content-poster .poster-buttons .button-edit,
+.content-poster .poster-buttons .button-detail,
+.content-poster .poster-buttons .button-delete {
+    display: inline-block;
+    width: 100%; /* Để các nút có cùng chiều rộng */
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1.5px solid var(--icon-color);
+    color: var(--icon-color);
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: none; /* Đảm bảo không có gạch chân */
+}
+
+.content-poster .poster-buttons .button-delete {
+    width: auto; /* Để nút Delete tự điều chỉnh kích thước */
+}
+
+.content-poster .poster-buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.content-poster .poster-buttons .button-edit,
+.content-poster .poster-buttons .button-delete,
+.content-poster .poster-buttons .button-detail {
+    display: inline-block;
+    width: auto;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1.5px solid var(--icon-color);
+    color: var(--icon-color);
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: none; /* Ensure there is no underline */
+}
+
+.content-poster .poster-buttons .button-edit {
+    width: 100px; /* Example width for edit button */
+}
+
+.content-poster .poster-buttons .button-delete {
+    width: 100px; /* Example width for delete button */
+}
+
+.content-poster .poster-buttons .button-detail {
+    width: 100px; /* Example width for detail button */
+}
+.edit-wrapper {
+    width: 100px;   
+    border-radius: 8px;
+    border: 1px solid #202224;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none; /* Ensure there is no underline */
+}
+.edit-wrapper:hover {
+    background-color: #f0f0f0; /* Optional: Add hover effect */
+}
+
+.edit-wrapper .edit {
+    width: 100%;
+    text-align: center;
+    color: #202224; /* Ensure the text color is readable */
+}
+.content-poster .poster-buttons .button-delete {
+    width: 30%;
+}
+
+/* End Poster List */
+
+/* Pagination */
+.content-poster .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    margin: 40px 0px;
+}
+
+.content-poster .pagination .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    background: #e4e4e4;
+}
+
+.content-poster .pagination .page-link.active {
+    background: var(--root-color);
+    color: white;
+}

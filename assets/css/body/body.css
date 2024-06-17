@@ -5,6 +5,10 @@
 @import "./product/product.css";
 @import "./product/add-product.css";
 
+
+@import "./poster/poster.css";
+@import "./poster/add-edit-poster.css";
+@import "./poster/detail-poster.css";
 .main-body {
     padding: 30px 20px 0px 20px;
     width: 100%;
