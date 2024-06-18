@@ -187,6 +187,7 @@
     font-weight: 600;
     border-radius: 5px;
     background: #e4e4e4;
+    color: var(--icon-color);
 }
 
 .content-product .pagination .page-link.active {
