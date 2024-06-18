@@ -12,7 +12,7 @@ const getProducts = async () => {
     if (products.data && Array.isArray(products.data) && products.data.length > 0 && (+currentPage <= products.last && +currentPage >= products.first)) {
         ProductList.innerHTML = products.data.map((product) => {
             return `
-                <div class="product-item">
+                <div class="product-item" data-id="${ product.id }">
                     <div class="product-image">
                         <img src="${ product.files[0] }">
                     </div>

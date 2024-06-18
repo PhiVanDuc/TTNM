@@ -4,24 +4,23 @@ const ConfirmDialog = document.querySelector(".confirm-dialog");
 const ButtonDisagree = ConfirmDialog.querySelector(".button-disagree");
 const ButtonAgree = ConfirmDialog.querySelector(".button-agree");
 
-ButtonDisagree.addEventListener("click", (e) => {
+ButtonDisagree.addEventListener("click", () => {
     ConfirmDialog.classList.add("hidden");
 });
 
-ButtonAgree.addEventListener("click", async (e) => {
+ButtonAgree.addEventListener("click", async () => {
     const id = ButtonAgree.dataset.id;
 
     const res = await fetch(`http://localhost:3000/products/${id}`, {
         method: "DELETE",
     });
 
-    if (res.ok) notify("Deleted product successfully!");
+    if (res.ok) {
+        const item = document.querySelector(`div[data-id="${id}"]`);
+        item.remove();
+        notify("Deleted product successfully!");
+    }
     else notify("Delete product failed!", false);
 
     ConfirmDialog.classList.add("hidden");
 });
-
-const test = document.querySelector(".test");
-test.onclick = () => {
-    notify("Deleted product successfully!");
-}
