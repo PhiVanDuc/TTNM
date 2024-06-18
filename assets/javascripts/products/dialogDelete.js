@@ -20,3 +20,8 @@ ButtonAgree.addEventListener("click", async (e) => {
 
     ConfirmDialog.classList.add("hidden");
 });
+
+const test = document.querySelector(".test");
+test.onclick = () => {
+    notify("Deleted product successfully!");
+}
