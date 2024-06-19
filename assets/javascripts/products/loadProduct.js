@@ -40,8 +40,10 @@ const getProducts = async () => {
                         </div>
 
                         <div class="product-buttons">
+                            <a href="http://127.0.0.1:3001/html/detail-product.html?id=${ product.id }" class="button-detail">Detail</a>
+
                             <div class="wrapper-button-edit">
-                                <div class="button-edit">Edit</div>
+                                <div class="button-edit" >Edit</div>
 
                                 <ul class="list-sizes">
                                     <h5 class="list-sizes-heading">

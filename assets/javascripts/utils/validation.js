@@ -86,11 +86,11 @@ function validation (options) {
                         finalFormValues[`${value.replace(" ", "-").replace(" single", "").replace(" disabled", "")}`] = formValues[value];
                     }
 
-                    await options.onSubmit({
-                        ...finalFormValues,
-                        "initial-price": formatPrice(finalFormValues["initial-price"]),
-                        "profit-price": formatPrice(finalFormValues["profit-price"]),
-                    });
+                    if (finalFormValues["initial-price"]) finalFormValues["initial-price"] = formatPrice(finalFormValues["initial-price"]);
+                    if (finalFormValues["profit-price"]) finalFormValues["profit-price"] = formatPrice(finalFormValues["profit-price"]);
+                    if (finalFormValues["select-size"]) finalFormValues["select-size"] = finalFormValues["select-size"][0];
+
+                    await options.onSubmit(finalFormValues);
                 }
             }
         })

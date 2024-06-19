@@ -27,7 +27,6 @@ async function urltoFile(url, filename, mimeType){
     if (!res.ok) window.location.href = "http://127.0.0.1:3001/";
 
     const data = await res.json();
-
     const FormProduct = document.querySelector(".form-product");
     const InputName = FormProduct.querySelector(".input-name");
     const InputQuantity = FormProduct.querySelector(".input-quantity");
@@ -44,13 +43,9 @@ async function urltoFile(url, filename, mimeType){
 
             if (Select.classList.contains("categories")) {
                 isExist = data["select-categories"].find(category => ItemText.innerHTML === category);
-            } else {
-                isExist = data["select-size"].find(size => ItemText.innerHTML === size);
-            }
+            } else isExist = ItemText.innerHTML === data["select-size"];
 
-            if (isExist) {
-                select_item.classList.add("checked");
-            }
+            if (isExist) select_item.classList.add("checked");
         });
         
         const innerTexts = Array.from(Select.querySelectorAll('.select-item.checked .item-text')).map(element => element.innerHTML);

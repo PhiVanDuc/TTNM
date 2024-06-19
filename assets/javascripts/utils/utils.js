@@ -68,12 +68,12 @@ export const addjustData = (array, key) => {
             if (Array.isArray(existing[key])) {
                 existing[key].push({
                     id: curr.id,
-                    size: curr[key][0]
+                    size: curr[key]
                 });
             } else {
                 existing[key] = [{
                     id: curr.id,
-                    size: curr[key][0]
+                    size: curr[key]
                 }];
             }
         } else {
@@ -82,7 +82,7 @@ export const addjustData = (array, key) => {
                 [key]: [
                     {
                         id: curr.id,
-                        size: curr[key][0],
+                        size: curr[key],
                     }
                 ]
             });

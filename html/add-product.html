@@ -295,11 +295,6 @@
                                     return dataUrl;
                                 }));
 
-                                console.log({
-                                    ...data,
-                                    files
-                                });
-
                                 const ButtonAdd = document.querySelector(".button-add-product");
                                 ButtonAdd.disabled = true;
 
@@ -317,33 +312,22 @@
 
                                     if (response.ok) notify("Added product successfully!");
                                     else notify("Add product failed!", false);
-                                } 
-                                else if (products.length > 0) {
-                                    // const isExist = products.find((product) => formatString(product.name) === formatString(data.name));
-                                    // if (isExist) notify("Product have already existed!", false);
-                                    // else {
-                                    //     const response = await fetch("http://localhost:3000/products", {
-                                    //         method: "POST",
-                                    //         headers: {
-                                    //             "Content-Type": "application/json"
-                                    //         },
-                                    //         body: JSON.stringify({ ...data, files }),
-                                    //     });
+                                } else {
+                                    const isExist = products.find((product) => formatString(product.name) === formatString(data.name) && product["select-size"] === data["select-size"]);
 
-                                    //     if (response.ok) notify("Added product successfully!");
-                                    //     else notify("Add product failed!", false);
-                                    // }
+                                    if (isExist) notify("The product already exists!", false);
+                                    else {
+                                        const response = await fetch("http://localhost:3000/products", {
+                                            method: "POST",
+                                            headers: {
+                                                "Content-Type": "application/json"
+                                            },
+                                            body: JSON.stringify({ ...data, files }),
+                                        });
 
-                                    const response = await fetch("http://localhost:3000/products", {
-                                        method: "POST",
-                                        headers: {
-                                            "Content-Type": "application/json"
-                                        },
-                                        body: JSON.stringify({ ...data, files }),
-                                    });
-
-                                    if (response.ok) notify("Added product successfully!");
-                                    else notify("Add product failed!", false);
+                                        if (response.ok) notify("Added product successfully!");
+                                        else notify("Add product failed!", false);
+                                    }
                                 }
 
                                 ButtonAdd.disabled = false;
