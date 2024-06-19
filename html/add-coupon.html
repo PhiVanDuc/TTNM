@@ -11,6 +11,19 @@
         <!-- Import css -->
         <link rel="stylesheet" href="../assets/css/styles.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        <style>
+            select{
+                display: inline-block;
+                width: 100%;
+                padding: 15px 20px;
+                font-size: 16px;
+                font-weight: 500;
+                border: 1px solid var(--icon-color);
+                border-radius: 5px;
+                background-color: transparent;
+                color: var(--icon-color);
+            }
+        </style>
     </head>
 
     <body>
@@ -172,6 +185,28 @@
                             </div>
                             
                         </div>
+                        <div class="form-align">
+                            <div class="form-group" style="width: 50%;">
+                                <label for="input-quantity">Start Time</label>
+                                <input type="datetime-local" class="input-start__time" id="input-start__time" name="start-time" placeholder="Start Time...">
+                                <span class="message"></span>
+                            </div>
+                            <div class="form-group" style="width: 50%;">
+                                <label for="input-discount-amount">End Time</label>
+                                <input type="datetime-local" class="input-end__time" id="input-end__time" name="end-time" placeholder="End Time...">
+                                <span class="message"></span>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="input-name" class="lable-name">Status</label>
+                            <select name="status" id="" class="input-status">
+                                <option value=""></option>
+                                <option value="1">Enable</option>
+                                <option value="2">Disnable</option>
+                            </select>
+                            <span class="message"></span>
+                        </div>
                        
                        
                         <div class="form-group">
@@ -206,6 +241,9 @@
                         validation.isRequired(".input-discount-amount", "Please enter number!"),
                         validation.isRequired(".input-coupon__code", "Please enter characters!"),
                         validation.isRequired(".input-description", "Please enter characters!"),
+                        validation.isRequired(".input-start__time", "Please enter characters!"),
+                        validation.isRequired(".input-end__time", "Please enter characters!"),
+                        validation.isRequired(".input-status", "Please enter characters!"),
                         validation.isMin(".input-description", "Please enter at least 6 characters!"),
                     ],
                     onSubmit: async function(data) {

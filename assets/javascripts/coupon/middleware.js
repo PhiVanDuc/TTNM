@@ -22,10 +22,17 @@ if (!id) window.location.href = "http://127.0.0.1:3001/";
     const InputDiscountAmount = FormProduct.querySelector(".input-discount-amount");
     const InputDescription = FormProduct.querySelector(".input-description");
     const InputCouponCode = FormProduct.querySelector(".input-coupon__code");
+    const InputStartTime = FormProduct.querySelector(".input-start__time");
+    const InputEndTime = FormProduct.querySelector(".input-end__time");
+    const InputStatus = FormProduct.querySelector(".input-status");
     InputName.value = data.name;
     InputQuantity.value = data.quantity;
     InputDiscountAmount.value = data.discount__amount;
     InputCouponCode.value = data.coupon__code;
     InputDescription.value = data["description"];
+    InputStartTime.value=data["start-time"];
+    InputEndTime.value=data["end-time"];
+    InputStatus.value=data.status;
+   
 
 })();
