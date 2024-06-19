@@ -15,11 +15,7 @@ ButtonAgree.addEventListener("click", async () => {
         method: "DELETE",
     });
 
-    if (res.ok) {
-        const item = document.querySelector(`div[data-id="${id}"]`);
-        item.remove();
-        notify("Deleted product successfully!");
-    }
+    if (res.ok) notify("Deleted product successfully!");
     else notify("Delete product failed!", false);
 
     ConfirmDialog.classList.add("hidden");

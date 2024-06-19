@@ -1,4 +1,5 @@
 import pagination from "../utils/pagination.js";
+import { addjustData } from "../utils/utils.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 let currentPage = urlParams.get('page') ? urlParams.get('page') : 1;
@@ -10,9 +11,14 @@ const getProducts = async () => {
     localStorage.setItem("length-products", JSON.stringify(products.items));
 
     if (products.data && Array.isArray(products.data) && products.data.length > 0 && (+currentPage <= products.last && +currentPage >= products.first)) {
-        ProductList.innerHTML = products.data.map((product) => {
+
+        // Xử lý sản phẩm nhiều size
+        const data = addjustData(products.data, "select-size");
+
+        // Render lên giao diện
+        ProductList.innerHTML = data.map((product) => {
             return `
-                <div class="product-item" data-id="${ product.id }">
+                <div class="product-item">
                     <div class="product-image">
                         <img src="${ product.files[0] }">
                     </div>
@@ -34,13 +40,46 @@ const getProducts = async () => {
                         </div>
 
                         <div class="product-buttons">
-                            <a href="http://127.0.0.1:3001/html/edit-product.html?id=${ product.id }" class="button-edit" data-id="${ product.id }">Edit</a>
-                            <button class="button-delete" data-id="${ product.id }">Delete</button>
+                            <div class="wrapper-button-edit">
+                                <div class="button-edit">Edit</div>
+
+                                <ul class="list-sizes">
+                                    <h5 class="list-sizes-heading">
+                                        <span>Edit product with size:</span>
+                                    </h5>
+
+                                    <div class="wrapper">
+                                        ${ product["select-size"].map(size => {
+                                            return `<li class="size-item">
+                                                <a href="http://127.0.0.1:3001/html/edit-product.html?id=${ size.id }">${size.size}</a>
+                                            </li>`
+                                        }).join("") }
+                                    </div>
+                                </ul>
+                            </div>
+
+                            <div class="wrapper-button-delete">
+                                <button class="button-delete">Delete</button>
+
+                                <ul class="list-sizes">
+                                    <h5 class="list-sizes-heading">
+                                        <span>Delete product with size:</span>
+                                    </h5>
+
+                                    <div class="wrapper">
+                                        ${ product["select-size"].map(size => {
+                                            return `<li class="size-item">
+                                                <span data-id="${ size.id }">${size.size}</span>
+                                            </li>`
+                                        }).join("") }
+                                    </div>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             `
-        }).join("")
+        }).join("");
     }
     else {
         ProductList.classList.add("empty");
@@ -50,7 +89,8 @@ const getProducts = async () => {
 
 await getProducts();
 
-const ButtonDeletes = ProductList.querySelectorAll(".button-delete");
+// Xử lý xóa product
+const ButtonDeletes = ProductList.querySelectorAll(".wrapper-button-delete .size-item span");
 const ConfirmDialog = document.querySelector(".confirm-dialog");
 const ButtonAgree = ConfirmDialog.querySelector(".button-agree");
 
@@ -60,9 +100,9 @@ ButtonDeletes.forEach(ButtonDelete => {
         ButtonAgree.dataset.id = id;
         ConfirmDialog.classList.remove("hidden");
     });
-})
+});
 
-// Pagination
+// Xử lý Pagination
 const paginationElement = document.querySelector(".content-product .pagination");
 const length = JSON.parse(localStorage.getItem("length-products"));
 

@@ -81,10 +81,15 @@ function validation (options) {
                         return prev;
                     }, {});
 
+                    const finalFormValues = {};
+                    for (let value in formValues) {
+                        finalFormValues[`${value.replace(" ", "-").replace(" single", "").replace(" disabled", "")}`] = formValues[value];
+                    }
+
                     await options.onSubmit({
-                        ...formValues,
-                        "initial-price": formatPrice(formValues["initial-price"]),
-                        "profit-price": formatPrice(formValues["profit-price"]),
+                        ...finalFormValues,
+                        "initial-price": formatPrice(finalFormValues["initial-price"]),
+                        "profit-price": formatPrice(finalFormValues["profit-price"]),
                     });
                 }
             }
@@ -141,9 +146,8 @@ validation.isRequiredCustomSelect = function (selector, message) {
     return {
         selector,
         test: function(value) {
-            const SelectCategories =  document.querySelector(".select-categories");
-            const CheckedList = Array.from(SelectCategories.querySelectorAll(".checked"));
-
+            const Select = document.querySelector(selector);
+            const CheckedList = Array.from(Select.querySelectorAll(".checked"));
             return CheckedList.length > 0 ? undefined : message;
         }
     }

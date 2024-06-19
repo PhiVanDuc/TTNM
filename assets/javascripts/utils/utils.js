@@ -59,3 +59,35 @@ export const profitPrice = (initial, profit, percent) => {
         profit.value = value + (value * percent);
     });
 }
+
+export const addjustData = (array, key) => {
+    return array.reduce((prev, curr) => {
+        const existing = prev.find(item => item.name === curr.name);
+
+        if (existing) {
+            if (Array.isArray(existing[key])) {
+                existing[key].push({
+                    id: curr.id,
+                    size: curr[key][0]
+                });
+            } else {
+                existing[key] = [{
+                    id: curr.id,
+                    size: curr[key][0]
+                }];
+            }
+        } else {
+            prev.push({
+                ...curr,
+                [key]: [
+                    {
+                        id: curr.id,
+                        size: curr[key][0],
+                    }
+                ]
+            });
+        }
+
+        return prev;
+    }, []);
+}

@@ -85,6 +85,7 @@
 }
 
 .content-product .product-item {
+    position: relative;
     border-radius: 8px;
     background: white;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -147,8 +148,21 @@
     column-gap: 10px;
 }
 
-.content-product .product-buttons .button-delete,
-.content-product .product-buttons .button-edit {
+.content-product .product-buttons .wrapper-button-edit {
+    width: 70%;
+}
+
+.content-product .product-buttons .wrapper-button-delete {
+    width: 30%;
+}
+
+.content-product .product-buttons .wrapper-button-delete .button-delete,
+.content-product .product-buttons .wrapper-button-edit .button-edit {
+    position: relative;
+    cursor: pointer;
+    cursor: pointer;
+    text-align: center;
+    background-color: transparent;
     display: inline-block;
     font-size: 15px;
     font-weight: 600;
@@ -156,14 +170,82 @@
     border-radius: 8px;
     border: 1.5px solid var(--icon-color);
     color: var(--icon-color);
-    width: 70%;
-    text-align: center;
-    background-color: transparent;
-    cursor: pointer;
+    width: 100%;
+    z-index: 2;
 }
 
-.content-product .product-buttons .button-delete {
-    width: 30%;
+.content-product .product-buttons .wrapper-button-delete .button-delete::before,
+.content-product .product-buttons .wrapper-button-edit .button-edit::before {
+    display: none;
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    bottom: -38px;
+    background-color: transparent;
+    z-index: -1;
+    cursor: context-menu;
+}
+
+.content-product .product-buttons .wrapper-button-delete:hover .button-delete::before,
+.content-product .product-buttons .wrapper-button-edit:hover .button-edit::before {
+    display: initial;
+}
+
+.content-product .wrapper-button-delete .list-sizes,
+.content-product .wrapper-button-edit .list-sizes {
+    display: none;
+    position: absolute;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    left: 10px;
+    right: 10px;
+    bottom: -110px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    border: 1.5px solid black;
+}
+
+/* .content-product .wrapper-button-delete .list-sizes {
+    bottom: -93px;
+} */
+
+.content-product .product-buttons .wrapper-button-delete:hover .list-sizes,
+.content-product .product-buttons .wrapper-button-edit:hover .list-sizes {
+    display: initial;
+}
+
+.content-product .wrapper-button-delete .list-sizes .wrapper,
+.content-product .wrapper-button-edit .list-sizes .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    width: 100%;
+}
+
+.content-product .wrapper-button-delete .list-sizes .list-sizes-heading,
+.content-product .wrapper-button-edit .list-sizes .list-sizes-heading {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.content-product .wrapper-button-delete .list-sizes .size-item span,
+.content-product .wrapper-button-edit .list-sizes .size-item a {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--icon-color);
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1.5px solid black;
+    text-align: center;
+}
+
+.content-product .wrapper-button-delete .list-sizes .size-item span {
+    cursor: pointer;
 }
 
 /* End Product List */
