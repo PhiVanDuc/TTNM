@@ -30,8 +30,8 @@ if (!id) window.location.href = "http://127.0.0.1:3001/";
     InputDiscountAmount.value = data.discount__amount;
     InputCouponCode.value = data.coupon__code;
     InputDescription.value = data["description"];
-    InputStartTime.value=data["start-time"];
-    InputEndTime.value=data["end-time"];
+    InputStartTime.value=data["start__time"];
+    InputEndTime.value=data["end__time"];
     InputStatus.value=data.status;
    
 

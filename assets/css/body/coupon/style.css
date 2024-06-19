@@ -1,0 +1,67 @@
+/* Table styling */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    /* border: 1px solid #dddddd; */
+}
+
+.product-table th, .product-table td {
+    padding: 12px 15px;
+    /* border: 1px solid #dddddd; */
+}
+
+.product-table thead tr {
+    background-color: #e5c7a6;
+    /* border-bottom: 2px solid #dddddd; */
+    
+}
+
+.product-table tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+
+.product-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Product item */
+.product-item .product-name {
+    font-weight: bold;
+}
+
+.product-item .product-cost {
+    color: #27ae60; /* Green color for the discount amount */
+}
+
+.product-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.product-buttons .button-edit,
+.product-buttons .button-delete {
+    padding: 6px 12px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.product-buttons .button-edit {
+    background-color: #3498db; /* Blue color for the edit button */
+}
+
+.product-buttons .button-delete {
+    background-color: #e74c3c; /* Red color for the delete button */
+}
+
+.product-buttons .button-edit:hover {
+    background-color: #2980b9;
+}
+
+.product-buttons .button-delete:hover {
+    background-color: #c0392b;
+}
