@@ -1,17 +1,5 @@
 {
   "products": [],
   "posters": [],
-  "coupons": [
-    {
-      "id": "2b01",
-      "name": "abcdef",
-      "coupon__code": "123",
-      "quantity": "1",
-      "discount__amount": "120",
-      "start__time": "2024-06-20T22:19",
-      "end__time": "2024-06-21T22:19",
-      "status": "1",
-      "description": "sdcfds"
-    }
-  ]
+  "coupons": []
 }

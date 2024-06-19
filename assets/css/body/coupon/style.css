@@ -65,3 +65,31 @@
 .product-buttons .button-delete:hover {
     background-color: #c0392b;
 }
+.product-lists .simple-spinner {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.simple-spinner span {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-right-color: var(--root-color);
+    animation: spinner-anim 0.8s linear infinite;
+  }
+  .content-product .product-lists.empty {
+    display: block;
+    text-align: center;
+}
+
+.content-product .product-lists.empty h3 {
+    font-size: 35px;
+    font-weight: 600;
+    color: rgb(207, 207, 207);
+}
