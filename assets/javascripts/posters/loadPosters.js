@@ -23,8 +23,9 @@ const getPosters = async () => {
                         </div>
 
                         <div class="poster-buttons">
+                         <a href="http://127.0.0.1:3001/html/detail-poster.html?id=${ poster.id }" class="button-edit" data-id="${ poster.id }">Detail</a>
                             <a href="http://127.0.0.1:3001/html/edit-poster.html?id=${ poster.id }" class="button-edit" data-id="${ poster.id }">Edit</a>
-                            <a href="http://127.0.0.1:3001/html/detail-poster.html?id=${ poster.id }" class="button-edit" data-id="${ poster.id }">Detail</a>
+                           
 
                             <button class="button-delete" data-id="${ poster.id }">Delete</button>
                         </div>
