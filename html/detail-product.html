@@ -3,14 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Channel - Product Management</title>
-
-        <!-- Import font awesome -->
+        <title>Channel - Detail Product</title>
+        <!-- Link font awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <!-- Import css -->
+        <!-- Link css -->
         <link rel="stylesheet" href="../assets/css/styles.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     </head>
 
     <body>
@@ -139,54 +137,21 @@
                 <div class="content-product">
                     <header class="heading">
                         <div class="align-heading">
-                            <h3>Product management</h3>
-                            <a href="http://127.0.0.1:3001/html/add-product.html" class="button-add">Add product</a>
+                            <h3>Detail product</h3>
+                            <a href="http://127.0.0.1:3001/html/product-management.html?page=1" class="button-add">Turn back</a>
                         </div>
 
                         <span class="seperate-bar"></span>
                     </header>
-
-                    <ul class="product-list">
-                        <div class="simple-spinner">
-                            <span></span>
-                        </div>
-                    </ul>
-
-                    <ul class="pagination">
-                    </ul>
                 </div>
 
-                <!-- Confirm dialog -->
-                <div class="confirm-dialog hidden">
-                    <div class="dialog-overlay"></div>
-
-                    <div class="container-dialog">
-                        <div class="dialog-heading">
-                            <div class="heading-content">
-                                <i class="fa-solid fa-question"></i>
-                                <span>Confirmation notice</span>
-                            </div>
-                            <span class="seperate-bar"></span>
-                        </div>
-
-                        <p class="dialog-content">Do you agree to delete product?</p>
-
-                        <div class="dialog-buttons">
-                            <button type="button" class="button-disagree">Disagree</button>
-                            <button type="button" class="button-agree" data-id="">Agree</button>
-                        </div>
-                    </div>
+                <div class="product-info">
                 </div>
-                <!-- End -->
             </main>
             <!-- End Main -->
 
             <script src="../assets/javascripts/sidebar.js"></script>
-            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-            <script type="module" src="../assets/javascripts/products/loadProduct.js"></script>
-            <script type="module" src="../assets/javascripts/utils/pagination.js"></script>
-            <script type="module" src="../assets/javascripts/utils/utils.js"></script>
-            <script type="module" src="../assets/javascripts/products/dialogDelete.js"></script>
+            <script src="../assets/javascripts/products/middlewareDetail.js"></script>
         </div>
     </body>
 </html>

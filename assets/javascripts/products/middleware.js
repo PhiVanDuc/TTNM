@@ -27,28 +27,32 @@ async function urltoFile(url, filename, mimeType){
     if (!res.ok) window.location.href = "http://127.0.0.1:3001/";
 
     const data = await res.json();
-
     const FormProduct = document.querySelector(".form-product");
     const InputName = FormProduct.querySelector(".input-name");
     const InputQuantity = FormProduct.querySelector(".input-quantity");
 
     // Query custom select option
-    const SelectCategories = FormProduct.querySelector(".select-categories");
-    const HeadingText = SelectCategories.querySelector(".heading-text");
-    const SelectItems = SelectCategories.querySelectorAll(".select-item");
+    const Selects = FormProduct.querySelectorAll(".select");
+    Selects.forEach((Select) => {
+        const HeadingText = Select.querySelector(".heading-text");
+        const SelectItems = Select.querySelectorAll(".select-item");
 
-    SelectItems.forEach((select_item) => {
-        const ItemText = select_item.querySelector(".item-text");
-        const isExist = data["select-categories"].find(category => ItemText.innerHTML === category);
-        if (isExist) {
-            select_item.classList.add("checked");
-        }
-    });
-    
-    const innerTexts = Array.from(document.querySelectorAll('.select-item.checked .item-text')).map(element => element.innerHTML);
+        SelectItems.forEach((select_item) => {
+            const ItemText = select_item.querySelector(".item-text");
+            let isExist;
 
-    if (innerTexts.length === 0) SELECT_HEADING_TEXT.innerText = heading;
-    else SELECT_HEADING_TEXT.innerText = innerTexts.join(", ") + ".";
+            if (Select.classList.contains("categories")) {
+                isExist = data["select-categories"].find(category => ItemText.innerHTML === category);
+            } else isExist = ItemText.innerHTML === data["select-size"];
+
+            if (isExist) select_item.classList.add("checked");
+        });
+        
+        const innerTexts = Array.from(Select.querySelectorAll('.select-item.checked .item-text')).map(element => element.innerHTML);
+
+        if (innerTexts.length > 1) HeadingText.innerText = innerTexts.join(", ") + ".";
+        else if (innerTexts.length === 1) HeadingText.innerText = innerTexts[0];
+    })
     // End
 
     const InputInitialPrice = FormProduct.querySelector(".input-initial-price");

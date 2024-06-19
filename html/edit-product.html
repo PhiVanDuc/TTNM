@@ -149,23 +149,23 @@
                     <form class="form-product">
                         <div class="form-group">
                             <label for="input-name">Product's name</label>
-                            <input type="text" class="input-name" id="input-name" name="name" placeholder="Product's name...">
+                            <input type="text" class="input-name" id="input-name" name="name" placeholder="Enter the product name..." disabled>
+                            <span class="message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-quantity">Quantity</label>
+                            <input type="number" class="input-quantity" id="input-quantity" name="quantity" placeholder="Enter quantity...">
                             <span class="message"></span>
                         </div>
 
                         <div class="form-align">
                             <div class="form-group" style="width: 50%;">
-                                <label for="input-quantity">Quantity</label>
-                                <input type="number" class="input-quantity" id="input-quantity" name="quantity" placeholder="Quantity...">
-                                <span class="message"></span>
-                            </div>
-
-                            <div class="form-group" style="width: 50%;">
                                 <label for="input-name" class="lable-name">Categories</label>
 
-                                <div class="select-categories" name="categories">
+                                <div class="select categories" name="size">
                                     <div class="select-heading">
-                                        <span class="heading-text">Categories...</span>
+                                        <span class="heading-text">Select categories...</span>
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </div>
 
@@ -188,25 +188,54 @@
                                 </div>
                                 <span class="message"></span>
                             </div>
+
+                            <div class="form-group" style="width: 50%;">
+                                <label for="input-name" class="lable-name">Size</label>
+
+                                <div class="select size single disabled" name="size">
+                                    <div class="select-heading">
+                                        <span class="heading-text">Select size</span>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </div>
+
+                                    <span class="overlay"></span>
+                                    <ul class="select-options">
+                                        <li class="select-item">
+                                            <span class="checkbox">
+                                                <i class="fa-solid fa-check"></i>
+                                            </span>
+                                            <span class="item-text">XL</span>
+                                        </li>
+
+                                        <li class="select-item">
+                                            <span class="checkbox">
+                                                <i class="fa-solid fa-check"></i>
+                                            </span>
+                                            <span class="item-text">XXL</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span class="message"></span>
+                            </div>
                         </div>
 
                         <div class="form-align">
                             <div class="form-group" style="width: 50%;">
                                 <label for="input-initial-price">Initial price</label>
-                                <input type="number" class="input-initial-price" id="input-initial-price" name="initial-price" placeholder="Initial price...">
+                                <input type="number" class="input-initial-price" id="input-initial-price" name="initial-price" placeholder="Enter initial price...">
                                 <span class="message"></span>
                             </div>
 
                             <div class="form-group" style="width: 50%;">
                                 <label for="input-profit-price">Profit price</label>
-                                <input type="number" class="input-profit-price" id="input-profit-price" name="profit-price" placeholder="Profit price..." disabled>
+                                <input type="number" class="input-profit-price" id="input-profit-price" name="profit-price" placeholder="Eg: 40.00" disabled>
                                 <span class="message"></span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="input-description">Product description</label>
-                            <textarea class="input-description" name="description" placeholder="Product description..."></textarea>
+                            <textarea class="input-description" name="description" placeholder="Enter product description..."></textarea>
                             <span class="message"></span>
                         </div>
 
@@ -227,7 +256,7 @@
             <!-- End Main -->
 
             <script src="../assets/javascripts/sidebar.js"></script>
-            <script src="../assets/javascripts/utils/select-options.js"></script>
+            <script type="module" src="../assets/javascripts/utils/select-options.js"></script>
             <script src="../assets/javascripts/utils/multiple-image.js"></script>
             <script src="../assets/javascripts/products/middleware.js"></script>
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
@@ -243,12 +272,9 @@
                     button: ".button-edit-product",
                     message: ".message",
                     rules: [
-                        validation.isRequired(".input-name", "Please enter characters!"),
-                        validation.isMin(".input-name", "Please enter at least 6 characters!"),
                         validation.isRequired(".input-quantity", "Please enter number!"),
-                        validation.isRequiredCustomSelect(".select-categories", "Please choose at leaste 1 category!"),
+                        validation.isRequiredCustomSelect(".select.categories", "Please choose at leaste 1 category!"),
                         validation.isRequired(".input-initial-price", "Please enter number!"),
-                        validation.isRequired(".input-profit-price", "Please enter number!"),
                         validation.isRequired(".input-description", "Please enter characters!"),
                         validation.isMin(".input-description", "Please enter at least 6 characters!"),
                         validation.isFiles(".input-file", "Please choose at least 1 file!"),
@@ -276,24 +302,16 @@
                                 const responseGet = await fetch("http://localhost:3000/products");
                                 const products = await responseGet.json();
                                 
-                                const isExist = products.find(product => {
-                                    if (product.id === id) return false;
-                                    return product.name === data.name;
+                                const res = await fetch(`http://localhost:3000/products/${id}`, {
+                                    method: "PATCH",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({ ...data, files }),
                                 });
 
-                                if (isExist) notify("Product have already existed!", false);
-                                else {
-                                    const res = await fetch(`http://localhost:3000/products/${id}`, {
-                                        method: "PATCH",
-                                        headers: {
-                                            "Content-Type": "application/json",
-                                        },
-                                        body: JSON.stringify({ ...data, files }),
-                                    });
-
-                                    if (res.ok) notify("Successfully edited the product!");
-                                    else notify("Editing the product has failed!", false);
-                                }
+                                if (res.ok) notify("Successfully edited the product!");
+                                else notify("Editing the product has failed!", false);
 
                                 ButtonEdit.disabled = false;
                             }

@@ -1,0 +1,114 @@
+@import "../../global.css";
+
+.product-info .main-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+    margin-bottom: 30px;
+}
+
+.product-info .main-info .product-img {
+    display: inline-block;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    height: 550px;
+    border-radius: 8px;
+}
+
+.product-info .main-info .product-name {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.product-info .main-info .align-info {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.product-info .main-info .info-item {
+    width: 100%;
+}
+
+.product-info .main-info h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.product-info .main-info .info-item .info-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: var(--root-color);
+    width: 100%;
+    column-gap: 10px;
+    font-weight: 500;
+}
+
+.product-info .main-info .info-item .info-content i,
+.product-info .main-info .info-item .info-content span {
+    box-shadow: none;
+}
+
+.product-info .main-info .info-item .info-content i {
+    font-size: 18px;
+}
+
+.product-info .main-info .info-item .info-content span {
+    font-size: 16px;
+    font-weight: 500;
+    font-style:normal;
+}
+
+.product-info .main-info .align-info.size {
+    display: block;
+}
+
+.product-info .main-info .align-info.size h5 {
+    margin-bottom: 15px;
+}
+
+.product-info .main-info .align-info.size .list-size {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.product-info .main-info .align-info.size .list-size .size-item {
+    padding: 20px 0px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1.5px solid rgb(213, 213, 213);
+    cursor: pointer;
+    color: var(--icon-color);
+}
+
+.product-info .main-info .align-info.size .list-size .size-item.marked {
+    border: 2px solid black;
+}
+
+.product-info .product-desc {
+    margin-bottom: 40px;
+}
+
+.product-info .product-desc h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.product-info .product-desc .desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+}
